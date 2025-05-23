@@ -1,11 +1,6 @@
 # predictive_analytics
 
-# Laporan Proyek Machine Learning - Kelompok 9
-
-**Nama Anggota Kelompok:**
-1. Damianus Christopher Samosir (G1A022028)
-2. Reksi Hendra Pratama (G1A022032)
-3. Yuda Reyvandra Herman (G1A022072)
+# Laporan Proyek Machine Learning - Damianus Christopher Samosir
 
 ## Domain Proyek
 
