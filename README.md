@@ -152,4 +152,3 @@ Kurva ini menunjukkan bahwa Random Forest memiliki AUC tertinggi, diikuti oleh J
 ## Kesimpulan
 Proyek ini berhasil membangun model *machine learning* untuk memprediksi risiko diabetes pada populasi Suku Pima Indian dengan akurasi yang baik. Random Forest terbukti menjadi model terbaik dengan akurasi 85% dan *F1-score* 77.7%, diikuti oleh J48 Decision Tree (84%) dan Naive Bayes (74%). Teknik penggantian nilai nol dengan median dan normalisasi data meningkatkan kualitas dataset, terutama untuk Naive Bayes. Meskipun performa Random Forest lebih baik dibandingkan artikel referensi dalam hal akurasi, *recall* dan *precision* dapat ditingkatkan lebih lanjut dengan eksplorasi *hyperparameter tuning* yang lebih mendalam atau penggunaan teknik seperti *oversampling* untuk menangani ketidakseimbangan kelas.
 
---- **Akhir Laporan** ---
