@@ -2,14 +2,18 @@
 
 # Laporan Proyek Machine Learning - Damianus Christopher Samosir
 
-## Domain Proyek
+## Domain Proyek: Kesehatan
+### Latar Belakang
 
-Diabetes Mellitus merupakan salah satu penyakit kronis yang memengaruhi jutaan orang di seluruh dunia, termasuk populasi spesifik seperti Suku Pima Indian yang memiliki prevalensi tinggi terhadap penyakit ini. Penyakit ini ditandai dengan kadar glukosa darah yang tinggi, yang dapat menyebabkan komplikasi serius jika tidak dideteksi dan dikelola dengan baik. Deteksi dini diabetes sangat penting untuk mencegah komplikasi jangka panjang seperti penyakit kardiovaskular, kerusakan ginjal, dan gangguan penglihatan. Dengan memanfaatkan teknik *machine learning*, kita dapat membangun model prediktif untuk mengidentifikasi individu yang berisiko tinggi terkena diabetes berdasarkan data klinis.
+Diabetes Mellitus adalah salah satu penyakit kronis yang terus mengalami peningkatan prevalensi secara global. Penyakit ini terjadi akibat gangguan metabolisme glukosa yang menyebabkan kadar gula darah tinggi dalam jangka panjang, dan dapat menimbulkan komplikasi serius seperti penyakit jantung, gagal ginjal, neuropati, serta gangguan penglihatan. Salah satu populasi yang diketahui memiliki tingkat kejadian diabetes yang tinggi adalah Suku Pima Indian, yang menjadikannya subjek penting dalam penelitian epidemiologi dan prediksi diabetes.
 
-Proyek ini bertujuan untuk mengembangkan model *machine learning* yang dapat memprediksi risiko diabetes pada populasi Suku Pima Indian menggunakan dataset Pima Indians Diabetes. Masalah ini perlu diselesaikan karena deteksi dini dapat membantu dalam intervensi medis yang tepat waktu, mengurangi biaya perawatan kesehatan, dan meningkatkan kualitas hidup pasien. Penelitian sebelumnya, seperti yang dilakukan oleh Smith et al. [1], menunjukkan bahwa algoritma *machine learning* seperti Random Forest dan Decision Tree dapat memberikan akurasi yang baik dalam memprediksi diabetes berdasarkan fitur klinis.
+Dengan kemajuan teknologi, pendekatan machine learning semakin banyak digunakan dalam bidang kesehatan untuk membangun model prediksi penyakit. Dataset Pima Indians Diabetes sering digunakan untuk mengembangkan model prediktif berdasarkan data klinis seperti kadar glukosa, tekanan darah, indeks massa tubuh, dan riwayat keluarga. Beberapa algoritma yang telah menunjukkan performa baik dalam studi sebelumnya meliputi Random Forest, Naive Bayes, dan J48 Decision Tree, dengan tingkat akurasi prediksi yang cukup tinggi.
 
-**Referensi:**
-[1] J. W. Smith, J. E. Everhart, W. C. Dickson, W. C. Knowler, and R. S. Johannes, "Using the ADAP learning algorithm to forecast the onset of diabetes mellitus," in *Proceedings of the Annual Symposium on Computer Application in Medical Care*, 1988, pp. 261–265. [Online]. Available: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2245318/
+Penggunaan machine learning dalam prediksi dini diabetes memiliki potensi besar untuk meningkatkan efektivitas intervensi medis dan mengurangi beban sistem kesehatan. Dengan identifikasi individu berisiko tinggi sejak awal, langkah-langkah pencegahan dapat dilakukan secara lebih tepat sasaran, efisien, dan personal.
+
+Referensi:
+- Kırğıl, E. N. H., Erkal, B., & Erçelebİ Ayyildiz, T. (2022). Predicting Diabetes Using Machine Learning Techniques. 2022 International Conference on Theoretical and Applied Computer Science and Engineering (ICTASCE), 137–141. https://doi.org/10.1109/ICTACSE50438.2022.10009726
+- Singh, K., Rout, J. K., & Das, H. (2019). Diabetes Prediction using Machine Learning Techniques. 2019 International Conference on Intelligent Computing and Remote Sensing (ICICRS), 1–6. https://doi.org/10.1109/ICICRS46726.2019.955588
 
 ## Business Understanding
 
@@ -30,7 +34,7 @@ Proyek ini bertujuan untuk mengembangkan model *machine learning* yang dapat mem
 
 ## Data Understanding
 
-Dataset yang digunakan dalam proyek ini adalah **Pima Indians Diabetes Dataset**, yang diunduh dari Google Drive dengan ID file `1rz1kAkPon56cdgse59oTkumkaD0N4J4h`. Dataset ini tersedia dalam format CSV (`diabetes.csv`) dan berisi 768 baris data dengan 9 kolom, termasuk 8 fitur independen dan 1 kolom target (*Outcome*). Dataset ini berasal dari studi tentang diabetes pada populasi Suku Pima Indian, yang memiliki prevalensi tinggi terhadap diabetes.
+Proyek ini menggunakan dataset dari Kaggle berjudul Movie Recommendation Data yang dapat diunduh melalui tautan berikut: 🔗 https://www.kaggle.com/datasets/uciml/pima-indians-diabetes-database/code, Dataset ini tersedia dalam format CSV (`diabetes.csv`) dan berisi 768 baris data dengan 9 kolom, termasuk 8 fitur independen dan 1 kolom target (*Outcome*). Dataset ini berasal dari studi tentang diabetes pada populasi Suku Pima Indian, yang memiliki prevalensi tinggi terhadap diabetes.
 
 ### Variabel-variabel pada Pima Indians Diabetes Dataset
 - **Pregnancies**: Jumlah kehamilan yang dialami pasien (numerik).
@@ -54,14 +58,22 @@ Proses persiapan data dilakukan untuk memastikan dataset bersih dan siap digunak
 1. **Penggantian Nilai Nol**:
    - Nilai nol pada kolom *Glucose*, *BloodPressure*, *SkinThickness*, *Insulin*, dan *BMI* digantikan dengan median dari masing-masing kolom berdasarkan kelompok *Outcome* (0 atau 1). 
    - **Alasan**: Nilai nol pada fitur-fitur ini tidak realistis secara klinis (misalnya, glukosa atau BMI tidak mungkin nol). Penggantian dengan median dipilih karena lebih tahan terhadap outlier dibandingkan rata-rata.
+     ![image](https://github.com/user-attachments/assets/df83e725-a6ed-4290-9bb0-2e3bf8b903c8)
+     ![image](https://github.com/user-attachments/assets/8cc6254d-7648-4b7e-bcf2-962daeb80db9)
+     ![image](https://github.com/user-attachments/assets/bb61defb-bcb5-4c4d-abda-9277499e1114)
+     ![image](https://github.com/user-attachments/assets/eceedd98-9af2-4121-a6ba-91060f4a310f)
+     ![image](https://github.com/user-attachments/assets/8f3f534d-4e2d-4844-b3f7-f6461044d27f)
 
 2. **Normalisasi Data**:
    - Data dinormalisasi menggunakan *StandardScaler* dari *scikit-learn* untuk menstandarisasi fitur ke skala yang sama.
    - **Alasan**: Normalisasi penting untuk algoritma seperti Naive Bayes yang sensitif terhadap skala data, meskipun Random Forest dan Decision Tree kurang sensitif.
+     ![image](https://github.com/user-attachments/assets/67c56d0f-53f1-4fa4-8a35-edb8b2f9602a)
 
 3. **Pemisahan Data**:
-   - Dataset dibagi menjadi data pelatihan (*X_train*, *y_train*) dan data pengujian (*X_test*, *y_test*) menggunakan *train_test_split* dengan rasio 80:20.
+   - Dataset dibagi menjadi data pelatihan (*X_train*, *y_train*) dan data pengujian (*X_test*, *y_test*) menggunakan *train_test_split* dengan rasio 70:30.
    - **Alasan**: Pemisahan data memungkinkan evaluasi model pada data yang tidak terlihat untuk menghindari *overfitting*.
+     ![image](https://github.com/user-attachments/assets/45f871e3-31ed-490b-a8d4-93c17c384a25)
+
 
 ## Modeling
 Tiga algoritma *machine learning* digunakan untuk membangun model prediktif: Random Forest, Naive Bayes, dan J48 Decision Tree. Berikut adalah penjelasan tahapan dan parameter yang digunakan:
@@ -71,16 +83,22 @@ Tiga algoritma *machine learning* digunakan untuk membangun model prediktif: Ran
    - **Kelebihan**: Tahan terhadap *overfitting*, dapat menangani data tidak seimbang, dan memberikan pentingnya fitur.
    - **Kekurangan**: Kompleksitas komputasi tinggi untuk dataset besar, dan interpretasi model lebih sulit dibandingkan Decision Tree.
    - **Improvement**: *Hyperparameter tuning* dilakukan untuk menemukan kombinasi parameter terbaik, seperti jumlah pohon (*n_estimators*) dan kedalaman maksimum (*max_depth*), untuk meningkatkan akurasi dan *F1-score*.
+     ![image](https://github.com/user-attachments/assets/cc502077-741a-4b10-868a-8821595ea7cf)
+
 
 2. **Naive Bayes**:
    - **Parameter**: Menggunakan *GaussianNB* tanpa *hyperparameter tuning* karena algoritma ini memiliki sedikit parameter yang dapat diatur.
    - **Kelebihan**: Cepat, sederhana, dan efektif untuk dataset dengan fitur independen.
    - **Kekurangan**: Asumsi independensi antar fitur sering kali tidak realistis, yang dapat menurunkan performa pada dataset dengan korelasi antar fitur.
+     ![image](https://github.com/user-attachments/assets/f2586cf3-6873-4332-8fef-996c0d894af8)
+
 
 3. **J48 Decision Tree**:
    - **Parameter**: Menggunakan *DecisionTreeClassifier* dengan kriteria *entropy* (setara dengan J48 di WEKA).
    - **Kelebihan**: Mudah diinterpretasikan, cepat untuk dataset kecil, dan dapat menangani data non-numerik.
    - **Kekurangan**: Rentan terhadap *overfitting* tanpa pengaturan parameter seperti kedalaman pohon atau jumlah sampel minimum.
+     ![image](https://github.com/user-attachments/assets/088791ec-4dd2-4c31-b861-68e5d258d1eb)
+
 
 ### Pemilihan Model Terbaik
 Random Forest dipilih sebagai model terbaik karena memiliki akurasi tertinggi (85%) dan *F1-score* yang seimbang (77.7%) dibandingkan Naive Bayes dan J48 Decision Tree. Selain itu, Random Forest lebih tahan terhadap *overfitting* dan memberikan hasil yang lebih stabil melalui pendekatan ensemble.
@@ -90,27 +108,34 @@ Model dievaluasi menggunakan metrik **akurasi**, **precision**, **recall**, dan 
 
 ### Penjelasan Metrik
 1. **Akurasi**: Proporsi prediksi yang benar dari total prediksi.
-   - Formula:  
-     \[
-     \text{Akurasi} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}
-     \]
+   - Formula:
+     
+   $$
+    \text{Accuracy} = \frac{TP + TN}{TP + TN + FP + FN}
+   $$
 
-     di mana TP = *True Positive*, TN = *True Negative*, FP = *False Positive*, FN = *False Negative*.
+      di mana TP = *True Positive*, TN = *True Negative*, FP = *False Positive*, FN = *False Negative*.
 2. **Precision**: Proporsi prediksi positif yang benar dari semua prediksi positif.
-   - Formula:  
-     \[
-     \text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
-     \]
+   - Formula:
+
+$$
+ \text{Precision} = \frac{TP}{TP + FP}
+$$
+
 3. **Recall**: Proporsi kasus positif yang berhasil diidentifikasi.
    - Formula:  
-     \[
-     \text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
-     \]
+
+$$
+ \text{Recall} = \frac{TP}{TP + FN}
+$$
+
 4. **F1-score**: Rata-rata harmonik dari *precision* dan *recall*, memberikan keseimbangan antara keduanya.
    - Formula:  
-     \[
-     \text{F1-score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
-     \]
+     
+$$
+ \text{F1 Score} = 2 \times \frac{\text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}
+$$
+
 5. **AUC**: Mengukur area di bawah kurva ROC, yang menunjukkan kemampuan model untuk membedakan kelas positif dan negatif. Nilai AUC mendekati 1 menunjukkan model yang baik.
 
 ### Hasil Evaluasi
@@ -118,16 +143,13 @@ Berikut adalah hasil evaluasi dari ketiga model berdasarkan metrik yang digunaka
 
 | Model              | Akurasi | Precision | Recall | F1-Score |
 |--------------------|---------|-----------|--------|----------|
-| Random Forest      | 85%     | 79.22%    | 76.25% | 77.7%    |
+| Random Forest      | 85%     | 80.26%    | 76.25% | 78.2%    |
 | Naive Bayes        | 74%     | 65.22%    | 56.25% | 60.4%    |
-| J48 Decision Tree  | 84%     | 78.94%    | 75%    | 76.9%    |
+| J48 Decision Tree  | 85%     | 79.22%    | 76.25% | 77.7%    |
 
-- **Random Forest**: Memberikan akurasi tertinggi (85%) dan *F1-score* yang seimbang (77.7%), menunjukkan kemampuan yang baik dalam memprediksi diabetes. Kurva ROC (ditampilkan dalam kode) menunjukkan AUC yang tinggi, mengindikasikan performa yang kuat dalam membedakan kelas.
+- **Random Forest**: Memberikan akurasi tertinggi (85%) dan *F1-score* yang seimbang (78.2%), menunjukkan kemampuan yang baik dalam memprediksi diabetes. Kurva ROC (ditampilkan dalam kode) menunjukkan AUC yang tinggi, mengindikasikan performa yang kuat dalam membedakan kelas.
 - **Naive Bayes**: Memiliki akurasi terendah (74%) dan *recall* yang rendah (56.25%), menunjukkan bahwa model ini kurang efektif dalam mengidentifikasi kasus positif (diabetes).
-- **J48 Decision Tree**: Menunjukkan akurasi yang baik (84%), tetapi *recall* sedikit lebih rendah dibandingkan Random Forest, yang dapat memengaruhi kemampuan mendeteksi kasus positif.
-
-### Perbandingan dengan Artikel
-Dibandingkan dengan artikel referensi, Random Forest pada proyek ini memiliki akurasi lebih tinggi (85% vs. 79.57%), tetapi *precision* dan *recall* lebih rendah. Naive Bayes pada artikel memiliki performa lebih baik dalam hal *recall* (86.75% vs. 56.25%), sementara J48 Decision Tree pada proyek lebih unggul dalam akurasi (84% vs. 74.78%).
+- **J48 Decision Tree**: Menunjukkan akurasi yang baik (85%), tetapi *Precision* sedikit lebih rendah dibandingkan Random Forest, yang dapat memengaruhi kemampuan mendeteksi kasus positif.
 
 ### Visualisasi ROC Curve
 Kurva ROC untuk ketiga model diplot untuk membandingkan performa:
@@ -143,8 +165,11 @@ plt.title("ROC Curve - Random Forest, Naive Bayes, & J48 Decision Tree")
 plt.legend()
 plt.show()
 ```
+![image](https://github.com/user-attachments/assets/614a2e1a-3311-4a18-a3d3-7bc01e50af49)
+
+
 Kurva ini menunjukkan bahwa Random Forest memiliki AUC tertinggi, diikuti oleh J48 Decision Tree, dan Naive Bayes memiliki AUC terendah.
 
 ## Kesimpulan
-Proyek ini berhasil membangun model *machine learning* untuk memprediksi risiko diabetes pada populasi Suku Pima Indian dengan akurasi yang baik. Random Forest terbukti menjadi model terbaik dengan akurasi 85% dan *F1-score* 77.7%, diikuti oleh J48 Decision Tree (84%) dan Naive Bayes (74%). Teknik penggantian nilai nol dengan median dan normalisasi data meningkatkan kualitas dataset, terutama untuk Naive Bayes. Meskipun performa Random Forest lebih baik dibandingkan artikel referensi dalam hal akurasi, *recall* dan *precision* dapat ditingkatkan lebih lanjut dengan eksplorasi *hyperparameter tuning* yang lebih mendalam atau penggunaan teknik seperti *oversampling* untuk menangani ketidakseimbangan kelas.
+Proyek ini berhasil membangun model *machine learning* untuk memprediksi risiko diabetes pada populasi Suku Pima Indian dengan akurasi yang baik. Random Forest terbukti menjadi model terbaik dengan akurasi 85% dan *F1-score* 78.20%, diikuti oleh J48 Decision Tree (85%) dan Naive Bayes (74%). Teknik penggantian nilai nol dengan median dan normalisasi data meningkatkan kualitas dataset, terutama untuk Naive Bayes. Meskipun performa Random Forest lebih baik dibandingkan artikel referensi dalam hal akurasi, *recall* dan *precision* dapat ditingkatkan lebih lanjut dengan eksplorasi *hyperparameter tuning* yang lebih mendalam atau penggunaan teknik seperti *oversampling* untuk menangani ketidakseimbangan kelas.
 
