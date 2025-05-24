@@ -83,8 +83,7 @@ Tiga algoritma *machine learning* digunakan untuk membangun model prediktif: Ran
    - **Kelebihan**: Tahan terhadap *overfitting*, dapat menangani data tidak seimbang, dan memberikan pentingnya fitur.
    - **Kekurangan**: Kompleksitas komputasi tinggi untuk dataset besar, dan interpretasi model lebih sulit dibandingkan Decision Tree.
    - **Improvement**: *Hyperparameter tuning* dilakukan untuk menemukan kombinasi parameter terbaik, seperti jumlah pohon (*n_estimators*) dan kedalaman maksimum (*max_depth*), untuk meningkatkan akurasi dan *F1-score*.
-     ![image](https://github.com/user-attachments/assets/cc502077-741a-4b10-868a-8821595ea7cf)
-
+     ![image](https://github.com/user-attachments/assets/a2744a72-02b5-4ef9-8350-a0cca8dc4229)
 
 2. **Naive Bayes**:
    - **Parameter**: Menggunakan *GaussianNB* tanpa *hyperparameter tuning* karena algoritma ini memiliki sedikit parameter yang dapat diatur.
@@ -97,7 +96,8 @@ Tiga algoritma *machine learning* digunakan untuk membangun model prediktif: Ran
    - **Parameter**: Menggunakan *DecisionTreeClassifier* dengan kriteria *entropy* (setara dengan J48 di WEKA).
    - **Kelebihan**: Mudah diinterpretasikan, cepat untuk dataset kecil, dan dapat menangani data non-numerik.
    - **Kekurangan**: Rentan terhadap *overfitting* tanpa pengaturan parameter seperti kedalaman pohon atau jumlah sampel minimum.
-     ![image](https://github.com/user-attachments/assets/088791ec-4dd2-4c31-b861-68e5d258d1eb)
+    ![image](https://github.com/user-attachments/assets/fe8c649c-bb2f-4c4c-9b8d-791cbfe2915e)
+
 
 
 ### Pemilihan Model Terbaik
@@ -143,13 +143,13 @@ Berikut adalah hasil evaluasi dari ketiga model berdasarkan metrik yang digunaka
 
 | Model              | Akurasi | Precision | Recall | F1-Score |
 |--------------------|---------|-----------|--------|----------|
-| Random Forest      | 85%     | 80.26%    | 76.25% | 78.2%    |
+| Random Forest      | 84%     | 78.20%    | 76.25% | 77.2%    |
 | Naive Bayes        | 74%     | 65.22%    | 56.25% | 60.4%    |
-| J48 Decision Tree  | 85%     | 79.22%    | 76.25% | 77.7%    |
+| J48 Decision Tree  | 84%     | 79.72%    | 73.75% | 76.7%    |
 
-- **Random Forest**: Memberikan akurasi tertinggi (85%) dan *F1-score* yang seimbang (78.2%), menunjukkan kemampuan yang baik dalam memprediksi diabetes. Kurva ROC (ditampilkan dalam kode) menunjukkan AUC yang tinggi, mengindikasikan performa yang kuat dalam membedakan kelas.
+- **Random Forest**: Memberikan akurasi tertinggi (84%) dan *F1-score* yang seimbang (77.2%), menunjukkan kemampuan yang baik dalam memprediksi diabetes. Kurva ROC (ditampilkan dalam kode) menunjukkan AUC yang tinggi, mengindikasikan performa yang kuat dalam membedakan kelas.
 - **Naive Bayes**: Memiliki akurasi terendah (74%) dan *recall* yang rendah (56.25%), menunjukkan bahwa model ini kurang efektif dalam mengidentifikasi kasus positif (diabetes).
-- **J48 Decision Tree**: Menunjukkan akurasi yang baik (85%), tetapi *Precision* sedikit lebih rendah dibandingkan Random Forest, yang dapat memengaruhi kemampuan mendeteksi kasus positif.
+- **J48 Decision Tree**: Menunjukkan akurasi yang baik (84%), tetapi *recall* sedikit lebih rendah dibandingkan Random Forest, yang dapat memengaruhi kemampuan mendeteksi kasus positif.
 
 ### Visualisasi ROC Curve
 Kurva ROC untuk ketiga model diplot untuk membandingkan performa:
@@ -165,11 +165,10 @@ plt.title("ROC Curve - Random Forest, Naive Bayes, & J48 Decision Tree")
 plt.legend()
 plt.show()
 ```
-![image](https://github.com/user-attachments/assets/614a2e1a-3311-4a18-a3d3-7bc01e50af49)
-
+![image](https://github.com/user-attachments/assets/f469d1ee-c0e1-4b25-91a6-d2fb558fdcfc)
 
 Kurva ini menunjukkan bahwa Random Forest memiliki AUC tertinggi, diikuti oleh J48 Decision Tree, dan Naive Bayes memiliki AUC terendah.
 
 ## Kesimpulan
-Proyek ini berhasil membangun model *machine learning* untuk memprediksi risiko diabetes pada populasi Suku Pima Indian dengan akurasi yang baik. Random Forest terbukti menjadi model terbaik dengan akurasi 85% dan *F1-score* 78.20%, diikuti oleh J48 Decision Tree (85%) dan Naive Bayes (74%). Teknik penggantian nilai nol dengan median dan normalisasi data meningkatkan kualitas dataset, terutama untuk Naive Bayes. Meskipun performa Random Forest lebih baik dibandingkan artikel referensi dalam hal akurasi, *recall* dan *precision* dapat ditingkatkan lebih lanjut dengan eksplorasi *hyperparameter tuning* yang lebih mendalam atau penggunaan teknik seperti *oversampling* untuk menangani ketidakseimbangan kelas.
+Proyek ini berhasil membangun model *machine learning* untuk memprediksi risiko diabetes pada populasi Suku Pima Indian dengan akurasi yang baik. Random Forest terbukti menjadi model terbaik dengan akurasi 84% dan *F1-score* 77.21%, diikuti oleh J48 Decision Tree (84%) dan Naive Bayes (74%). Teknik penggantian nilai nol dengan median dan normalisasi data meningkatkan kualitas dataset, terutama untuk Naive Bayes. Meskipun performa Random Forest lebih baik dibandingkan artikel referensi dalam hal akurasi, *recall* dan *precision* dapat ditingkatkan lebih lanjut dengan eksplorasi *hyperparameter tuning* yang lebih mendalam atau penggunaan teknik seperti *oversampling* untuk menangani ketidakseimbangan kelas.
 
