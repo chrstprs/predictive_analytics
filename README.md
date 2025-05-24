@@ -94,6 +94,7 @@ Model dievaluasi menggunakan metrik **akurasi**, **precision**, **recall**, dan 
      \[
      \text{Akurasi} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}
      \]
+
      di mana TP = *True Positive*, TN = *True Negative*, FP = *False Positive*, FN = *False Negative*.
 2. **Precision**: Proporsi prediksi positif yang benar dari semua prediksi positif.
    - Formula:  
