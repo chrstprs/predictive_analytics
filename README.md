@@ -80,6 +80,7 @@ Tiga algoritma *machine learning* digunakan untuk membangun model prediktif: Ran
 1. **Random Forest**:
    - **Cara Kerja**: Random Forest adalah algoritma ensemble yang menggabungkan keputusan dari beberapa pohon keputusan (decision trees) menggunakan teknik bagging (bootstrap aggregating). Setiap pohon dilatih pada subset acak dari data dan fitur. Prediksi akhir dibuat dengan mayoritas voting untuk klasifikasi, di mana setiap pohon memberikan satu suara, dan kelas dengan suara terbanyak dipilih sebagai output.
    - **Parameter**: Model dioptimalkan menggunakan GridSearchCV dengan parameter utama n_estimators=1800 (jumlah pohon), dan max_features=[2, 3] (jumlah fitur yang dipertimbangkan pada setiap split). Kombinasi ini dipilih setelah tuning untuk menyeimbangkan akurasi dan kompleksitas komputasi.
+   - **Peran Parameter**: Parameter n_estimators=1800 meningkatkan stabilitas prediksi dengan menggabungkan lebih banyak pohon, sehingga mengurangi varians dan mencegah overfitting, meskipun menambah waktu komputasi. Parameter max_features=[2, 3] membatasi jumlah fitur acak yang dipertimbangkan pada setiap split, meningkatkan keberagaman antar pohon dan mengurangi korelasi, yang pada akhirnya memperbaiki generalisasi model.
    - **Kelebihan**: Tahan terhadap overfitting karena averaging dari banyak pohon, dapat menangani data tidak seimbang, dan memberikan pentingnya fitur.
    - **Kekurangan**: Kompleksitas komputasi tinggi untuk dataset besar, dan interpretasi model lebih sulit dibandingkan Decision Tree.
      ![image](https://github.com/user-attachments/assets/a2744a72-02b5-4ef9-8350-a0cca8dc4229)
@@ -87,6 +88,7 @@ Tiga algoritma *machine learning* digunakan untuk membangun model prediktif: Ran
 2. **Naive Bayes**:
    - **Cara Kerja**: Naive Bayes adalah algoritma berbasis probabilitas yang menerapkan teorema Bayes dengan asumsi independensi antar fitur. Untuk data numerik seperti dataset ini, varian *GaussianNB* digunakan, di mana probabilitas kelas dihitung berdasarkan distribusi Gaussian untuk setiap fitur. Prediksi dilakukan dengan menghitung probabilitas posterior untuk setiap kelas dan memilih kelas dengan nilai tertinggi.
    - **Parameter**: Algoritma digunakan dengan pengaturan default, termasuk var_smoothing=1e-9 (untuk menangani varians nol), yang disesuaikan otomatis oleh scikit-learn.
+   - **Peran Parameter**: Parameter var_smoothing=1e-9 menambahkan nilai kecil pada varians fitur untuk mencegah pembagian dengan nol pada fitur dengan varians rendah, sehingga meningkatkan stabilitas perhitungan probabilitas dan mencegah error numerik, terutama pada dataset dengan fitur yang memiliki distribusi sempit.
    - **Kelebihan**: Cepat, sederhana, dan efektif untuk dataset dengan fitur independen.
    - **Kekurangan**: Asumsi independensi antar fitur sering kali tidak realistis, yang dapat menurunkan performa pada dataset dengan korelasi antar fitur.
      ![image](https://github.com/user-attachments/assets/f2586cf3-6873-4332-8fef-996c0d894af8)
@@ -94,6 +96,7 @@ Tiga algoritma *machine learning* digunakan untuk membangun model prediktif: Ran
 3. **J48 Decision Tree**:
    - **Cara Kerja**: J48 (implementasi C4.5) membangun pohon keputusan dengan memilih fitur terbaik untuk membagi data berdasarkan kriteria *information gain* atau *entropy*. Proses ini berulang hingga mencapai kondisi henti (misalnya, kedalaman maksimum atau jumlah sampel minimum per daun). Prediksi dibuat dengan menelusuri pohon dari akar ke daun berdasarkan nilai fitur.
    - **Parameter**: Menggunakan DecisionTreeClassifier dengan criterion='entropy', max_depth=5 (kedalaman maksimum pohon), dan min_samples_split=10 (jumlah minimum sampel untuk membagi node) untuk mengontrol kompleksitas dan mencegah overfitting.
+   - **Peran Parameter**: Parameter criterion='entropy' menggunakan metrik information gain untuk memilih fitur yang paling mengurangi ketidakpastian, meningkatkan kemampuan model untuk membedakan kelas. Parameter max_depth=5 membatasi kedalaman pohon untuk mencegah overfitting dengan mengurangi kompleksitas model. Parameter min_samples_split=10 memastikan bahwa pembagian node hanya dilakukan jika terdapat cukup sampel, sehingga meningkatkan generalisasi dan mencegah pembagian yang terlalu spesifik pada data pelatihan.
    - **Kelebihan**: Mudah diinterpretasikan, cepat untuk dataset kecil, dan dapat menangani data non-numerik.
    - **Kekurangan**: Rentan terhadap overfitting tanpa pengaturan parameter seperti kedalaman pohon atau jumlah sampel minimum.
     ![image](https://github.com/user-attachments/assets/fe8c649c-bb2f-4c4c-9b8d-791cbfe2915e)
